@@ -34,30 +34,31 @@
 .image-wrapper {
   position: relative;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 8px;
   aspect-ratio: 3/4;
-  border: 1px solid var(--color-purple);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+  border: 1px solid rgba(122, 0, 0, 0.3);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s ease, border-color 0.6s ease;
 }
 
 .gallery-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-  /* The base filter is overridden inline via React style prop */
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), filter 0.8s ease;
+  filter: grayscale(80%) contrast(1.2) brightness(0.7); /* Dark and mysterious default state */
 }
 
 /* Hover Effects */
 .gallery-item:hover .image-wrapper {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(122, 0, 0, 0.4);
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(122, 0, 0, 0.6), 0 0 20px rgba(255, 69, 0, 0.2);
   border-color: var(--color-crimson);
 }
 
 .gallery-item:hover .gallery-image {
   transform: scale(1.1);
+  filter: grayscale(0%) contrast(1.1) brightness(1.1); /* Color comes alive on hover */
 }
 
 /* Glitch Overlay Effect created using clip-path and animations */
@@ -67,8 +68,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('/jennie.webp') no-repeat center center / cover;
-  mix-blend-mode: screen;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  mix-blend-mode: color-dodge;
   opacity: 0;
   transition: opacity 0.3s;
   pointer-events: none;
