@@ -93,7 +93,7 @@ const Summon = () => {
         duration: 3
       });
 
-    }, 6000); // 6 seconds wait before returning to normal
+    }, 10000); // 10 seconds wait before returning to normal
   };
 
   return (
