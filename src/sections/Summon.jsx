@@ -40,6 +40,9 @@ const Summon = () => {
   const handleSummon = () => {
     setIsSummoned(true);
     
+    // Broadcast global event to extinguish candles in About section
+    window.dispatchEvent(new CustomEvent('summonRitual', { detail: { isSummoned: true } }));
+    
     // Play the audio synth drop
     audioSynth.playSummonRitual();
 
@@ -84,6 +87,8 @@ const Summon = () => {
           textRef.current.innerText = "SUMMON JENNIE";
           gsap.to(textRef.current, { opacity: 1, color: '#7a0000', scale: 1, textShadow: 'none', duration: 1 });
           setIsSummoned(false);
+          // Reignite candles
+          window.dispatchEvent(new CustomEvent('summonRitual', { detail: { isSummoned: false } }));
         }
       });
 
@@ -94,7 +99,7 @@ const Summon = () => {
         duration: 3
       });
 
-    }, 15000); // 15 seconds wait before returning to normal
+    }, 10000); // 10 seconds wait before returning to normal
   };
 
   return (

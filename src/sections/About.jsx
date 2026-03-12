@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Candles from '../components/Candles';
 import './About.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -73,6 +74,9 @@ const About = () => {
       <div ref={el => symbolRefs.current[0] = el} className="symbol symbol-1">⛧</div>
       <div ref={el => symbolRefs.current[1] = el} className="symbol symbol-2">⸸</div>
       <div ref={el => symbolRefs.current[2] = el} className="symbol symbol-3">🜏</div>
+      
+      {/* Interactive Candles */}
+      <Candles />
     </section>
   );
 };

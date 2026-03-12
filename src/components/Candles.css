@@ -1,0 +1,91 @@
+.candles-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 60px;
+  margin-top: 4rem;
+  height: 150px;
+}
+
+.candle {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.candle.left { transform: scale(0.8) translateY(20px); }
+.candle.center { transform: scale(1.1) translateY(0px); z-index: 2; }
+.candle.right { transform: scale(0.9) translateY(10px); }
+
+.wax {
+  width: 30px;
+  height: 80px;
+  background: linear-gradient(to bottom, #d6d6d6, #5c5c5c 40%, #1a1a1a);
+  border-radius: 4px 4px 2px 2px;
+  box-shadow: 
+    inset 0 -10px 10px rgba(0,0,0,0.8), 
+    inset 0 4px 2px rgba(255,255,255,0.2), 
+    0 5px 15px rgba(0,0,0,0.5);
+  position: relative;
+}
+
+.wax::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  background: #111;
+  border-radius: 2px;
+}
+
+/* Realistic Flame */
+.flame {
+  position: absolute;
+  top: -40px;
+  width: 15px;
+  height: 35px;
+  background: radial-gradient(ellipse at bottom, white 10%, yellow 30%, orange 60%, transparent 80%);
+  border-radius: 50% 50% 20% 20%;
+  animation: candleFlicker 2s infinite ease-in-out alternate;
+  box-shadow: 
+    0 -10px 20px rgba(255, 165, 0, 0.4),
+    0 -20px 40px rgba(255, 69, 0, 0.2);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform-origin: bottom center;
+}
+
+.flame.blown-out {
+  opacity: 0;
+  transform: scaleY(0) translateY(10px);
+}
+
+@keyframes candleFlicker {
+  0% { transform: scaleX(0.95) scaleY(1.05) rotate(-2deg); opacity: 0.9; }
+  25% { transform: scaleX(1.05) scaleY(0.95) rotate(1deg); opacity: 1; filter: brightness(1.2); }
+  50% { transform: scaleX(0.9) scaleY(1.1) rotate(-1deg); opacity: 0.8; }
+  75% { transform: scaleX(1.1) scaleY(0.9) rotate(2deg); opacity: 1; filter: brightness(1.1); }
+  100% { transform: scaleX(1) scaleY(1) rotate(0deg); opacity: 0.95; }
+}
+
+/* Smoke tail when blown out */
+.smoke {
+  position: absolute;
+  top: -40px;
+  width: 8px;
+  height: 40px;
+  background: radial-gradient(circle, rgba(150,150,150,0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: smokeRise 4s ease-out forwards;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes smokeRise {
+  0% { transform: translateY(0) scale(1) translateX(0); opacity: 0.8; }
+  50% { transform: translateY(-30px) scale(2) translateX(-10px); opacity: 0.4; }
+  100% { transform: translateY(-60px) scale(3) translateX(20px); opacity: 0; }
+}
