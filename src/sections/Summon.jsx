@@ -122,11 +122,22 @@ const Summon = () => {
       
       {/* Footer Hellfire and Credit */}
       <div className="footer-fire-container">
+        {/* SVG Filter for realistic licking flame displacement */}
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style={{ position: 'absolute', width: 0, height: 0 }}>
+          <defs>
+            <filter id="fire-turbulence">
+              <feTurbulence type="fractalNoise" baseFrequency="0.015 0.05" numOctaves="3" result="noise" />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="50" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+          </defs>
+        </svg>
+
         <div className="fire-effects">
-          <div className="fire left"></div>
-          <div className="fire center"></div>
-          <div className="fire right"></div>
+          <div className="flame main"></div>
+          <div className="flame sub1"></div>
+          <div className="flame sub2"></div>
         </div>
+        
         <a 
           href="https://r2-vision.firebaseapp.com/" 
           target="_blank" 
