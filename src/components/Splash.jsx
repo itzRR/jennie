@@ -20,7 +20,7 @@ const Splash = ({ onEnter }) => {
         <h1 className="splash-title">Jennie's Realm</h1>
         <p className="splash-warning">This experience contains flashing lights, loud noises, and dark themes.</p>
         <button className="enter-btn" onClick={handleEnter}>
-          <span className="enter-text">ENTER REALM</span>
+          <span className="enter-text">OFFER SOUL</span>
           <div className="enter-glow"></div>
         </button>
       </div>
