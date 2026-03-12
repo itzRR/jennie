@@ -18,7 +18,7 @@ const Splash = ({ onEnter }) => {
     <div ref={containerRef} className="splash-screen">
       <div className="splash-content">
         <h1 className="splash-title">Jennie's Realm</h1>
-        <p className="splash-warning">This experience contains flashing lights, loud noises, and dark themes.</p>
+        <p className="splash-warning">There is no turning back once the ritual begins.</p>
         <button className="enter-btn" onClick={handleEnter}>
           <span className="enter-text">OFFER SOUL</span>
           <div className="enter-glow"></div>
