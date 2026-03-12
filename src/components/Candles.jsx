@@ -16,20 +16,26 @@ const Candles = () => {
   return (
     <div className="candles-container">
       {/* Three realistic candles for occult symbolism */}
-      <div className="candle left">
-        <div className="wax"></div>
-        <div className={`candle-flame ${isBlownOut ? 'blown-out' : ''}`}></div>
-        {isBlownOut && <div className="smoke"></div>}
+      <div className="candle-wrapper left">
+        <div className="candle">
+          <div className="wax"></div>
+          <div className={`candle-flame ${isBlownOut ? 'blown-out' : ''}`}></div>
+          {isBlownOut && <div className="smoke"></div>}
+        </div>
       </div>
-      <div className="candle center">
-        <div className="wax"></div>
-        <div className={`candle-flame ${isBlownOut ? 'blown-out' : ''}`}></div>
-        {isBlownOut && <div className="smoke"></div>}
+      <div className="candle-wrapper center">
+        <div className="candle">
+          <div className="wax"></div>
+          <div className={`candle-flame ${isBlownOut ? 'blown-out' : ''}`}></div>
+          {isBlownOut && <div className="smoke"></div>}
+        </div>
       </div>
-      <div className="candle right">
-        <div className="wax"></div>
-        <div className={`candle-flame ${isBlownOut ? 'blown-out' : ''}`}></div>
-        {isBlownOut && <div className="smoke"></div>}
+      <div className="candle-wrapper right">
+        <div className="candle">
+          <div className="wax"></div>
+          <div className={`candle-flame ${isBlownOut ? 'blown-out' : ''}`}></div>
+          {isBlownOut && <div className="smoke"></div>}
+        </div>
       </div>
     </div>
   );
