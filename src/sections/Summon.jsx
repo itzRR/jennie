@@ -119,6 +119,23 @@ const Summon = () => {
         </button>
       </div>
       <p className="footer-warning">Do not stare directly into her eyes.</p>
+      
+      {/* Footer Hellfire and Credit */}
+      <div className="footer-fire-container">
+        <div className="fire-effects">
+          <div className="fire left"></div>
+          <div className="fire center"></div>
+          <div className="fire right"></div>
+        </div>
+        <a 
+          href="https://r2-vision.firebaseapp.com/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="developer-credit"
+        >
+          Developed by Rehan
+        </a>
+      </div>
     </section>
   );
 };

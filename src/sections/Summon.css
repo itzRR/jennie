@@ -150,4 +150,75 @@
   color: var(--color-text-muted);
   text-transform: uppercase;
   opacity: 0.5;
+  z-index: 2;
+}
+
+/* Footer Fire & Credit */
+.footer-fire-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 2rem;
+  z-index: 10;
+  pointer-events: none; /* Let clicks pass through to the link */
+}
+
+.fire-effects {
+  position: absolute;
+  bottom: -20px;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  opacity: 0.6;
+  filter: blur(8px) contrast(2);
+  mix-blend-mode: screen;
+}
+
+.fire {
+  position: absolute;
+  bottom: 0;
+  width: 200px;
+  height: 100%;
+  background: radial-gradient(ellipse at bottom, var(--color-orange-glow) 0%, var(--color-crimson) 40%, transparent 70%);
+  animation: flicker 0.5s infinite alternate;
+  border-radius: 50% 50% 0 0;
+}
+
+.fire.left { left: 10%; transform: scale(1.2); animation-delay: 0.1s; animation-duration: 0.6s; }
+.fire.center { left: 50%; transform: translateX(-50%) scale(1.5); animation-duration: 0.4s; }
+.fire.right { right: 10%; transform: scale(1.3); animation-delay: 0.2s; animation-duration: 0.7s; }
+
+@keyframes flicker {
+  0% { transform: scaleY(1) translateY(0); opacity: 0.8; filter: hue-rotate(0deg); }
+  100% { transform: scaleY(1.3) translateY(-10px); opacity: 1; filter: hue-rotate(-20deg); }
+}
+
+.developer-credit {
+  position: relative;
+  font-family: var(--font-body);
+  color: var(--color-text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  text-decoration: none;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  pointer-events: auto; /* Enable clicking */
+  z-index: 20;
+  padding: 10px;
+  text-shadow: 0 0 5px rgba(0,0,0,0.8);
+}
+
+.developer-credit:hover {
+  opacity: 1;
+  color: var(--color-orange-glow);
+  text-shadow: 0 0 10px var(--color-crimson), 0 0 20px var(--color-orange-glow);
+  transform: translateY(-2px);
+  cursor: auto; /* Allow normal click behavior */
 }
