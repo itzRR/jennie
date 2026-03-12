@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { audioSynth } from '../utils/audioSynth';
 import './Summon.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -38,6 +39,9 @@ const Summon = () => {
   const handleSummon = () => {
     setIsSummoned(true);
     
+    // Play the audio synth drop
+    audioSynth.playSummonRitual();
+
     // Intense animation upon click
     gsap.to(ringRef.current, {
       rotation: '+=720',

@@ -1,0 +1,25 @@
+.audio-toggle-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999; /* Ensure it stays above everything */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(11, 11, 11, 0.7);
+  border: 1px solid var(--color-crimson);
+  color: var(--color-crimson);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(122, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.audio-toggle-btn:hover {
+  background: rgba(122, 0, 0, 0.8);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 69, 0, 0.6);
+  transform: scale(1.1);
+}

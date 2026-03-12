@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { audioSynth } from '../utils/audioSynth';
 import './Gallery.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -46,6 +47,7 @@ const Gallery = () => {
             key={item.id} 
             ref={el => itemsRef.current[index] = el}
             className="gallery-item"
+            onMouseEnter={() => audioSynth.playGlitch()}
           >
             <div className="image-wrapper">
               {/* Note: We reuse jennie.webp to create thematic variations */}
