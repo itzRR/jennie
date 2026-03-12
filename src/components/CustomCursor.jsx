@@ -1,11 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { useIsMobile } from '../hooks/useIsMobile';
 import './CustomCursor.css';
 
 const CustomCursor = () => {
   const cursorRef = useRef(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
+    if (isMobile) return;
+
     const onMouseMove = (e) => {
       // Small offset for the center
       gsap.to(cursorRef.current, {
@@ -18,7 +22,9 @@ const CustomCursor = () => {
 
     window.addEventListener('mousemove', onMouseMove);
     return () => window.removeEventListener('mousemove', onMouseMove);
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) return null;
 
   return <div ref={cursorRef} className="custom-cursor"></div>;
 };
