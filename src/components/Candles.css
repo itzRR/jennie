@@ -62,7 +62,7 @@
 }
 
 /* Realistic Flame Core */
-.flame {
+.candle-flame {
   position: absolute;
   top: -45px;
   width: 18px;
@@ -81,7 +81,7 @@
   transform-origin: bottom center;
 }
 
-.flame.blown-out {
+.candle-flame.blown-out {
   animation: blowOut 0.5s ease-out forwards;
 }
 

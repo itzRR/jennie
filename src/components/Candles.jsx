@@ -18,17 +18,17 @@ const Candles = () => {
       {/* Three realistic candles for occult symbolism */}
       <div className="candle left">
         <div className="wax"></div>
-        <div className={`flame ${isBlownOut ? 'blown-out' : ''}`}></div>
+        <div className={`candle-flame ${isBlownOut ? 'blown-out' : ''}`}></div>
         {isBlownOut && <div className="smoke"></div>}
       </div>
       <div className="candle center">
         <div className="wax"></div>
-        <div className={`flame ${isBlownOut ? 'blown-out' : ''}`}></div>
+        <div className={`candle-flame ${isBlownOut ? 'blown-out' : ''}`}></div>
         {isBlownOut && <div className="smoke"></div>}
       </div>
       <div className="candle right">
         <div className="wax"></div>
-        <div className={`flame ${isBlownOut ? 'blown-out' : ''}`}></div>
+        <div className={`candle-flame ${isBlownOut ? 'blown-out' : ''}`}></div>
         {isBlownOut && <div className="smoke"></div>}
       </div>
     </div>
