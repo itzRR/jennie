@@ -5,26 +5,47 @@
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 100; /* Over everything except cursor/splash */
+  z-index: 999998; /* Under cursor, but over Splash Screen */
   overflow: hidden;
+}
+
+/* Creeping blood drip from the top of the monitor */
+.blood-rain-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20vh;
+  background: 
+    radial-gradient(ellipse at 20% -20%, var(--color-crimson) 40%, transparent 60%),
+    radial-gradient(ellipse at 80% -10%, var(--color-crimson) 50%, transparent 70%),
+    radial-gradient(ellipse at 50% -30%, var(--color-crimson) 60%, transparent 80%);
+  filter: blur(2px) contrast(2) drop-shadow(0 5px 5px rgba(122,0,0,0.8));
+  animation: dripDown 15s ease-out forwards;
+  opacity: 0.8;
+  mix-blend-mode: multiply;
+}
+
+@keyframes dripDown {
+  0% { transform: translateY(-100%); }
+  10% { transform: translateY(0); height: 20vh; }
+  100% { transform: translateY(0); height: 40vh; }
 }
 
 .blood-drop {
   position: absolute;
-  top: -50px;
-  background: linear-gradient(to bottom, transparent, var(--color-crimson));
-  border-radius: 0 0 5px 5px;
+  top: -100px;
+  background: linear-gradient(180deg, transparent 0%, var(--color-crimson) 50%, #5a0000 100%);
+  border-radius: 50% 50% 50% 50% / 0% 0% 100% 100%;
   animation: bloodFall linear infinite;
-  filter: drop-shadow(0 0 5px rgba(122, 0, 0, 0.8));
+  box-shadow: 0 5px 15px rgba(255, 0, 0, 0.5);
 }
 
 @keyframes bloodFall {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(110vh);
-  }
+  0% { transform: translateY(-50px) scaleY(1); opacity: 1; }
+  80% { transform: translateY(100vh) scaleY(2); opacity: 0.8; }
+  100% { transform: translateY(110vh) scaleY(3); opacity: 0; }
 }
 
 .blood-overlay {
@@ -33,12 +54,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, transparent 40%, rgba(122, 0, 0, 0.2) 100%);
-  animation: pulseBlood 3s infinite alternate;
+  background: radial-gradient(circle, transparent 40%, rgba(122, 0, 0, 0.4) 100%);
+  animation: pulseBlood 2s infinite alternate;
   mix-blend-mode: multiply;
 }
 
 @keyframes pulseBlood {
-  0% { opacity: 0.5; }
+  0% { opacity: 0.3; }
   100% { opacity: 1; }
 }

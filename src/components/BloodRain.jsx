@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import './BloodRain.css';
 
 const BloodRain = ({ isActive }) => {
@@ -12,14 +13,14 @@ const BloodRain = ({ isActive }) => {
 
     // Generate random blood drops
     const createDrops = () => {
-      const newDrops = Array.from({ length: 50 }).map((_, i) => ({
+      const newDrops = Array.from({ length: 70 }).map((_, i) => ({
         id: i,
         left: `${Math.random() * 100}vw`,
-        animationDuration: `${Math.random() * 1 + 0.5}s`,
+        animationDuration: `${Math.random() * 0.8 + 0.4}s`,
         animationDelay: `${Math.random() * 2}s`,
-        width: `${Math.random() * 3 + 1}px`,
-        height: `${Math.random() * 20 + 10}px`,
-        opacity: Math.random() * 0.5 + 0.3
+        width: `${Math.random() * 2 + 2}px`,
+        height: `${Math.random() * 40 + 20}px`,
+        opacity: Math.random() * 0.6 + 0.4
       }));
       setDrops(newDrops);
     };
@@ -29,7 +30,7 @@ const BloodRain = ({ isActive }) => {
 
   if (!isActive) return null;
 
-  return (
+  return createPortal(
     <div className="blood-rain-container">
       {drops.map((drop) => (
         <div 
@@ -46,7 +47,8 @@ const BloodRain = ({ isActive }) => {
         ></div>
       ))}
       <div className="blood-overlay"></div>
-    </div>
+    </div>,
+    document.body
   );
 };
 
