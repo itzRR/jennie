@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Gallery = () => {
   const galleryRef = useRef(null);
   const itemsRef = useRef([]);
+  const symbolRefs = useRef([]);
 
   useEffect(() => {
     itemsRef.current.forEach((el, i) => {
@@ -25,6 +26,26 @@ const Gallery = () => {
             start: 'top 85%',
             end: 'bottom 15%',
             toggleActions: 'play reverse play reverse'
+          }
+        }
+      );
+    });
+
+    // Parallax and fade for gallery background symbols
+    symbolRefs.current.forEach((el, index) => {
+      gsap.fromTo(el,
+        { autoAlpha: 0, rotation: 45, scale: 0.8 },
+        {
+          autoAlpha: 0.15, // keep subtly hidden behind the gallery cards
+          rotation: -45,
+          scale: 1,
+          duration: 3,
+          ease: 'sine.inOut',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 95%',
+            end: 'bottom 5%',
+            scrub: 1
           }
         }
       );
@@ -64,6 +85,12 @@ const Gallery = () => {
           </div>
         ))}
       </div>
+
+      {/* Background Occult Symbols */}
+      <div ref={el => symbolRefs.current[0] = el} className="gallery-symbol symbol-1">⛧</div>
+      <div ref={el => symbolRefs.current[1] = el} className="gallery-symbol symbol-2">🜔</div>
+      <div ref={el => symbolRefs.current[2] = el} className="gallery-symbol symbol-3">☾</div>
+      <div ref={el => symbolRefs.current[3] = el} className="gallery-symbol symbol-4">⸸</div>
     </section>
   );
 };

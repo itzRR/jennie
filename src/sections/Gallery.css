@@ -125,3 +125,40 @@
     filter: hue-rotate(-90deg);
   }
 }
+
+/* Background Occult Symbols */
+.gallery-symbol {
+  position: absolute;
+  font-size: 15vw;
+  color: var(--color-crimson);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1; /* Behind the grid (grid items are higher due to normal flow) */
+  font-family: serif;
+}
+
+.gallery-symbol.symbol-1 {
+  top: 15%;
+  left: 5%;
+}
+
+.gallery-symbol.symbol-2 {
+  bottom: 10%;
+  right: 5%;
+  font-size: 20vw;
+  color: var(--color-purple);
+}
+
+.gallery-symbol.symbol-3 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30vw;
+  color: rgba(26, 0, 31, 0.4); /* Almost black, extra dark purple */
+}
+
+.gallery-symbol.symbol-4 {
+  top: 5%;
+  right: 15%;
+  font-size: 10vw;
+}
