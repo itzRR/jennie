@@ -54,11 +54,31 @@
   transform: translateY(-15px) scale(1.02);
   box-shadow: 0 15px 40px rgba(122, 0, 0, 0.6), 0 0 20px rgba(255, 69, 0, 0.2);
   border-color: var(--color-crimson);
+  animation: wrapperBreathe 3s ease-in-out infinite alternate;
+  animation-delay: 0.6s; /* Waits for the initial hover transition to finish */
+}
+
+@keyframes wrapperBreathe {
+  0% { 
+    transform: translateY(-15px) scale(1.02); 
+    box-shadow: 0 15px 40px rgba(122, 0, 0, 0.6), 0 0 20px rgba(255, 69, 0, 0.2); 
+  }
+  100% { 
+    transform: translateY(-22px) scale(1.03); 
+    box-shadow: 0 25px 50px rgba(122, 0, 0, 0.8), 0 0 30px rgba(255, 69, 0, 0.4); 
+  }
 }
 
 .gallery-item:hover .gallery-image {
   transform: scale(1.1);
   filter: grayscale(0%) contrast(1.1) brightness(1.1); /* Color comes alive on hover */
+  animation: imagePan 5s ease-in-out infinite alternate;
+  animation-delay: 0.8s; /* Waits for initial scale transition */
+}
+
+@keyframes imagePan {
+  0% { transform: scale(1.1); }
+  100% { transform: scale(1.15) rotate(1deg); }
 }
 
 /* Glitch Overlay Effect created using clip-path and animations */
