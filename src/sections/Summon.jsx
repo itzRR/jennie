@@ -65,6 +65,35 @@ const Summon = () => {
       filter: 'contrast(1.5) hue-rotate(30deg)',
       duration: 2
     });
+
+    // Reversal sequence after the ritual finishes (e.g. 6 seconds)
+    setTimeout(() => {
+      // Revert ring
+      gsap.to(ringRef.current, {
+        boxShadow: '0 0 20px rgba(122, 0, 0, 0.3), inset 0 0 20px rgba(122, 0, 0, 0.3)',
+        duration: 2,
+        ease: 'power2.out'
+      });
+      
+      // Revert text
+      gsap.to(textRef.current, {
+        opacity: 0,
+        duration: 1,
+        onComplete: () => {
+          textRef.current.innerText = "SUMMON JENNIE";
+          gsap.to(textRef.current, { opacity: 1, color: '#7a0000', scale: 1, textShadow: 'none', duration: 1 });
+          setIsSummoned(false);
+        }
+      });
+
+      // Revert global background
+      gsap.to('.app-container', {
+        backgroundColor: 'transparent',
+        filter: 'none',
+        duration: 3
+      });
+
+    }, 6000); // 6 seconds wait before returning to normal
   };
 
   return (
