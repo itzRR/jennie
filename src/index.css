@@ -1,0 +1,66 @@
+:root {
+  --color-black: #0b0b0b;
+  --color-crimson: #7a0000;
+  --color-purple: #1a001f;
+  --color-orange-glow: #ff4500;
+  --color-text-main: #e0e0e0;
+  --color-text-muted: #888888;
+  
+  --font-heading: 'Cinzel Decorative', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-black);
+  color: var(--color-text-main);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  cursor: none; /* Custom cursor replaces default */
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: none; /* Ensuring custom cursor implies everywhere */
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* Custom Webkit Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-crimson);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-orange-glow);
+}
+
+.app-container {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+}

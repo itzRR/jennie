@@ -1,0 +1,124 @@
+.gallery-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: var(--color-black);
+  padding: 10vh 5vw;
+  z-index: 2;
+}
+
+.gallery-heading {
+  text-align: center;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--color-crimson);
+  margin-bottom: 5rem;
+  text-transform: uppercase;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.gallery-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  cursor: none;
+}
+
+.image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  aspect-ratio: 3/4;
+  border: 1px solid var(--color-purple);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  /* The base filter is overridden inline via React style prop */
+}
+
+/* Hover Effects */
+.gallery-item:hover .image-wrapper {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(122, 0, 0, 0.4);
+  border-color: var(--color-crimson);
+}
+
+.gallery-item:hover .gallery-image {
+  transform: scale(1.1);
+}
+
+/* Glitch Overlay Effect created using clip-path and animations */
+.glitch-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/jennie.webp') no-repeat center center / cover;
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.gallery-item:hover .glitch-overlay {
+  opacity: 0.8;
+  animation: glitch-anim 0.3s infinite linear alternate-reverse;
+}
+
+.item-title {
+  font-family: var(--font-heading);
+  color: var(--color-text-main);
+  font-size: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.1em;
+  transition: color 0.3s ease;
+}
+
+.gallery-item:hover .item-title {
+  color: var(--color-crimson);
+  text-shadow: 0 0 10px rgba(122, 0, 0, 0.8);
+}
+
+@keyframes glitch-anim {
+  0% {
+    clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+    transform: translate(-5px, 2px);
+    filter: hue-rotate(90deg);
+  }
+  20% {
+    clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%);
+    transform: translate(5px, -5px);
+  }
+  40% {
+    clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%);
+    transform: translate(-5px, 2px);
+    filter: invert(1);
+  }
+  60% {
+    clip-path: polygon(0 80%, 100% 80%, 100% 85%, 0 85%);
+    transform: translate(5px, 5px);
+  }
+  80% {
+    clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
+    transform: translate(-5px, -2px);
+  }
+  100% {
+    clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%);
+    transform: translate(5px, 2px);
+    filter: hue-rotate(-90deg);
+  }
+}
