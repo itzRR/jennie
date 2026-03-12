@@ -233,18 +233,18 @@
   letter-spacing: 0.2em;
   font-size: 0.8rem;
   text-decoration: none;
-  opacity: 0.6;
+  opacity: 1; /* Increased from 0.6 to 1 for better visibility */
   transition: all 0.3s ease;
   pointer-events: auto; /* Enable clicking */
   z-index: 20;
   padding: 10px;
-  text-shadow: 0 0 5px rgba(0,0,0,0.8);
+  text-shadow: 0 0 10px rgba(0,0,0,1), 0 0 20px rgba(0,0,0,1), 0 0 30px rgba(0,0,0,1); /* Added heavy black shadow to pop against the fire */
+  font-weight: 600; /* Added weight */
 }
 
 .developer-credit:hover {
-  opacity: 1;
   color: var(--color-orange-glow);
-  text-shadow: 0 0 10px var(--color-crimson), 0 0 20px var(--color-orange-glow);
+  text-shadow: 0 0 10px var(--color-crimson), 0 0 20px var(--color-orange-glow), 0 0 30px rgba(0,0,0,1);
   transform: translateY(-2px);
-  cursor: auto; /* Allow normal click behavior */
+  cursor: pointer; /* Allow normal click behavior */
 }
