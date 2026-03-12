@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { audioSynth } from '../utils/audioSynth';
+import BloodRain from '../components/BloodRain';
 import './Summon.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -147,6 +148,7 @@ const Summon = () => {
           Developed by Rehan
         </a>
       </div>
+      <BloodRain isActive={isSummoned} />
     </section>
   );
 };
